@@ -3,14 +3,31 @@
 {% block title %}Kategoria{% endblock %}
 
 {% block content %}
-<h2>Kategoria: {{ request.args.get('cat', 'Brak') }}</h2>
+<form method="get" action="{{ url_for('category', category=category) }}" class="search-form">
+    <input type="text" name="q" placeholder="Szukaj przepisu..." value="{{ request.args.get('q', '') }}">
+    <button type="submit">Szukaj</button>
+</form>
+
 <section class="recipe-list">
-    <article class="recipe-card">
-        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="Przepis 1">
-        <h3>Przepis 1</h3>
-        <p>Czas: 15 min</p>
-        <p>Trudność: Średnia</p>
-        <a href="recipe.html">Zobacz przepis</a>
-    </article>
+    {% if recipes %}
+        {% for recipe in recipes %}
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/' + recipe.image) }}" alt="{{ recipe.name }}">
+            <h3>{{ recipe.name }}</h3>
+            <p><i class="fa fa-clock-o"></i> Czas: {{ recipe.time }}</p>
+            <p><i class="fa fa-fire"></i> {{ recipe.difficulty }}</p>
+            <div class="rating">
+    {% for i in range(1, 6) %}
+        <span class="fa fa-star {% if i <= recipe.rating %}star-checked{% endif %}"></span>
+    {% endfor %}
+</div>
+            <a href="{{ recipe.url }}">Zobacz przepis</a>
+        </div> 
+        {% endfor %}
+    {% else %}
+        <p>Brak przepisów w tej kategorii.</p>
+    {% endif %}
 </section>
+
+
 {% endblock %}
