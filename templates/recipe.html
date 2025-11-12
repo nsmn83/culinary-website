@@ -54,9 +54,14 @@
           {% endfor %}
           <p>{{ user_comment.text }}</p>
 
-          <form action="{{ url_for('delete_comment', recipe_id=recipe.id, comment_id=user_comment.id) }}" method="POST">
-            <button type="submit" class="delete-btn">Usuń komentarz</button>
-          </form>
+          <form action="{{ url_for('delete_comment', recipe_id=recipe.id, comment_id=user_comment.id) }}" 
+      method="POST" 
+      style="display:inline;">
+  <button type="submit" title="Usuń komentarz" 
+          style="background:none; border:none; padding:0; margin-left:6px; cursor:pointer; color:#d9534f; font-size:1.2em;">
+    <i class="fa fa-trash"></i>
+  </button>
+</form>
         </div>
       {% else %}
         <h3>Dodaj komentarz</h3>
@@ -83,7 +88,7 @@
   <section>
     <h3>Komentarze</h3>
     {% if recipe.comments %}
-      <ul>
+       <ul style="list-style-type:none; padding:0;">
         {% for comment in recipe.comments %}
           <li>
             <strong>{{ comment.user.username }}</strong> 
