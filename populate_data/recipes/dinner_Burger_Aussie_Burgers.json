@@ -1,0 +1,25 @@
+{
+    "original_id": "53099",
+    "name": "Burgery australijskie",
+    "category": "obiad",
+    "image_filename": "53099_Aussie_Burgers.jpg",
+    "time": "30 min",
+    "difficulty": "Średni",
+    "portions": "2-3",
+    "ingredients": [
+        "500 g chudej mielonej wołowiny",
+        "100 g ugotowanego buraka",
+        "2 małe chleby naan",
+        "50 g rukoli",
+        "4 łyżki kwaśnej śmietany z szczypiorkiem"
+    ],
+    "steps": [
+        "Przygotuj burgery: mięso przełóż do miski, dodaj 1 łyżeczkę soli i świeżo zmielony pieprz. Wyrób rękami, aby przyprawy dobrze się wymieszały.",
+        "Podziel masę mięsną na cztery części i uformuj burgery.",
+        "Przygotuj składniki: pokrój buraka i przekrój chleby naan na pół.",
+        "Podgrzej patelnię grillową lub grilla. Podpraż naan z obu stron, aż lekko się zarumieni, odstaw na bok.",
+        "Grilluj burgery 2–3 minuty z każdej strony, aż będą dobrze usmażone.",
+        "Złóż burgery: na każdej połówce naan ułóż rukolę, następnie burger, kilka plasterków buraka i łyżkę kwaśnej śmietany.",
+        "Posyp solą i świeżo zmielonym pieprzem. Podawaj od razu z dużą sałatką i frytkami."
+    ]
+}

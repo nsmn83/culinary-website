@@ -1,0 +1,32 @@
+{
+    "original_id": "53065",
+    "name": "Sushi",
+    "category": "kolacja",
+    "image_filename": "53065_Sushi.jpg",
+    "time": "45 min",
+    "difficulty": "Średni",
+    "portions": "2-3",
+    "ingredients": [
+        "300 ml ryżu do sushi",
+        "100 ml wina ryżowego",
+        "2 łyżki cukru",
+        "3 łyżki majonezu",
+        "1 łyżka wina ryżowego",
+        "1 łyżka sosu sojowego",
+        "1 ogórek"
+    ],
+    "steps": [
+        "Rozłóż ryż na macie do sushi.",
+        "Połóż arkusz nori na macie, błyszczącą stroną do dołu.",
+        "Zmocz dłonie w wodzie z octem ryżowym i równomiernie rozłóż ryż na nori, pozostawiając wolny brzeg.",
+        "Rozprowadź cienką warstwę majonezu po środku ryżu.",
+        "Dodaj wybrane nadzienie – tutaj użyto tuńczyka i ogórka.",
+        "Zwiń sushi matą, lekko dociskając, aby rolka była ciasna.",
+        "Zwilż wolny brzeg wodą, dokończ zwijanie rolki i mocno ją dociśnij.",
+        "Zawiń w folię spożywczą, pokrój na grube plastry i usuń folię.",
+        "Do sushi prasowanego: wyłóż cienką warstwę wędzonego łososia w foremce wyłożonej folią, przykryj warstwą ryżu i dociśnij.",
+        "Odwróć blok sushi na deskę i pokrój na paski.",
+        "Do sushi w formie kulek: umieść wybrane nadzienie na małym kwadracie folii, uformuj kulkę ryżu wielkości orzecha włoskiego i nałóż na nadzienie.",
+        "Zwiń folię, formując ciasne kulki, następnie rozwiń i podawaj."
+    ]
+}

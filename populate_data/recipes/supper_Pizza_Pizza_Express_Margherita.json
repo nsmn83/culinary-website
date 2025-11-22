@@ -1,0 +1,36 @@
+{
+    "original_id": "53014",
+    "name": "Pizza Margherita Express",
+    "category": "kolacja",
+    "image_filename": "53014_Pizza_Express_Margherita.jpg",
+    "time": "45 min",
+    "difficulty": "Łatwy",
+    "portions": "2-3",
+    "ingredients": [
+        "150 ml wody",
+        "1 łyżeczka cukru",
+        "15 g świeżych drożdży",
+        "225 g mąki pszennej",
+        "1,5 łyżeczki soli",
+        "odrobina oliwy z oliwek",
+        "80 g passaty pomidorowej",
+        "70 g mozzarelli",
+        "oregano, liście obrane i pokrojone",
+        "liście bazylii",
+        "szczypta czarnego pieprzu"
+    ],
+    "steps": [
+        "Rozgrzej piekarnik do 230°C.",
+        "Do ciepłej wody dodaj cukier i pokruszone drożdże.",
+        "Odstaw mieszankę na 10–15 minut w ciepłe miejsce, aż pojawi się piana na powierzchni.",
+        "Przesiej mąkę i sól do dużej miski, zrób wgłębienie i wlej mieszankę drożdży oraz oliwę.",
+        "Posyp lekko ręce mąką i powoli mieszaj składniki, aż się połączą.",
+        "Obficie posyp blat mąką.",
+        "Wyłóż ciasto na blat i zagniataj przez 10 minut, aż będzie gładkie, elastyczne i miękkie.",
+        "Umieść ciasto w lekko naoliwionej formie do pieczenia.",
+        "Rozsmaruj passatę pomidorową równomiernie po cieście, docierając do brzegów.",
+        "Rozłóż równomiernie mozzarellę, dopraw oregano i pieprzem, skrop oliwą z oliwek.",
+        "Piecz w piekarniku przez 10–12 minut, aż ser lekko się zarumieni.",
+        "Po upieczeniu udekoruj liśćmi bazylii i podawaj."
+    ]
+}

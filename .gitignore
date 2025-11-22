@@ -48,3 +48,7 @@ htmlcov/
 # --- __old / backup files ---
 *.bak
 *.swp
+
+# --- Scripts used to prepare data
+change_names.py
+download_data.py

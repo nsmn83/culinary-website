@@ -4,13 +4,25 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from functools import wraps
+from dotenv import load_dotenv
 import os
 
-app = Flask(__name__)
-app.secret_key = "supersecretkey"
+load_dotenv()
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "instance", "database.db")
+app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "fallback_key")
+
+ADMIN_USERNAME=os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD=os.getenv("ADMIN_PASSWORD")
+
+DB_USER = os.getenv("POSTGRES_USER")
+DB_PASS = os.getenv("POSTGRES_PASSWORD")
+DB_NAME = os.getenv("POSTGRES_DB")
+DB_HOST = os.getenv("POSTGRES_HOST")
+DB_PORT = int(os.getenv("POSTGRES_PORT"))
+
+
+app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "images")
@@ -276,7 +288,7 @@ def add_recipe():
         flash("Przepis dodany pomyślnie!", "success")
         return redirect(url_for("admin_dashboard"))
 
-    CATEGORIES = ["obiad", "deser", "śniadanie", "przekąska"]  
+    CATEGORIES = ["obiad", "śniadanie", "kolacja"]
     return render_template('add_recipe.html', categories=CATEGORIES)
 
 @app.route("/admin/recipe/<int:recipe_id>/edit", methods=["GET", "POST"])
@@ -377,15 +389,16 @@ def init_db():
     with app.app_context():
         db.create_all()
         
-        if not User.query.filter_by(username="admin").first():
-            admin_user = User(
-                username="admin",
-                password=generate_password_hash("admin123"),
-                is_admin=True
-            )
-            db.session.add(admin_user)
-            db.session.commit()
-            print("--- BAZA ZAINICJOWANA, ADMIN UTWORZONY ---")
+        if ADMIN_USERNAME and ADMIN_PASSWORD:
+            if not User.query.filter_by(username=ADMIN_USERNAME).first():
+                admin_user = User(
+                    username=ADMIN_USERNAME,
+                    password=generate_password_hash(ADMIN_PASSWORD),
+                    is_admin=True
+                )
+                db.session.add(admin_user)
+                db.session.commit()
+                print("--- BAZA ZAINICJOWANA, ADMIN UTWORZONY ---")
 
 
 init_db()

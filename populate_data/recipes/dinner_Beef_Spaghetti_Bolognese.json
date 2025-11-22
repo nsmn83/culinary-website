@@ -1,0 +1,33 @@
+{
+    "original_id": "52770",
+    "name": "Spaghetti Bolognese",
+    "category": "obiad",
+    "image_filename": "52770_Spaghetti_Bolognese.jpg",
+    "time": "50 min",
+    "difficulty": "Średni",
+    "portions": "3-4",
+    "ingredients": [
+        "2 cebule",
+        "1 łyżka oliwy z oliwek",
+        "1 ząbek czosnku",
+        "500 g chudej mielonej wołowiny",
+        "90 g pieczarek",
+        "1 łyżeczka suszonego oregano",
+        "1 puszka (400 g) pomidorów",
+        "300 ml gorącego bulionu wołowego",
+        "1 łyżka koncentratu pomidorowego",
+        "1 łyżka sosu Worcestershire",
+        "350 g spaghetti",
+        "parmezan do posypania"
+    ],
+    "steps": [
+        "Rozgrzej oliwę w dużym garnku i podsmaż cebulę przez 3–4 minuty na średnim ogniu.",
+        "Dodaj czosnek i mięso mielone, smaż aż lekko się zarumieni.",
+        "Dodaj pieczarki i oregano, smaż kolejne 2–3 minuty.",
+        "Wlej pomidory, bulion, koncentrat pomidorowy i sos Worcestershire, dopraw solą i pieprzem.",
+        "Doprowadź do wrzenia, następnie zmniejsz ogień, przykryj i gotuj na wolnym ogniu przez 30 minut, mieszając od czasu do czasu.",
+        "W międzyczasie ugotuj spaghetti w dużym garnku z osoloną wrzącą wodą zgodnie z instrukcją na opakowaniu.",
+        "Odcedź makaron, przepłucz gorącą wodą, włóż z powrotem do garnka, dodaj odrobinę oliwy i wymieszaj z sosem mięsno-pomidorowym.",
+        "Podawaj w ciepłych miskach, posypując startym parmezanem."
+    ]
+}

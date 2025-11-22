@@ -1,10 +1,8 @@
 <div class="topnav" id="myTopnav">
-  <!-- 🔹 Strona główna -->
   <a href="{{ url_for('index') }}" class="{% if request.path == url_for('index') %}active{% endif %}">
     Strona główna
   </a>
 
-  <!-- 🔹 Menu przepisy -->
   <div class="dropdown">
     <a href="javascript:void(0);" 
        class="{% if request.path.startswith('/category') %}active{% endif %}" 
@@ -12,14 +10,14 @@
        Przepisy
     </a>
     <div class="dropdown-content">
-      <a href="{{ url_for('category', category='sniadanie') }}">Śniadania</a>
+      <a href="{{ url_for('category', category='śniadanie') }}">Śniadania</a>
       <a href="{{ url_for('category', category='obiad') }}">Obiady</a>
       <a href="{{ url_for('category', category='kolacja') }}">Kolacje</a>
       <a href="{{ url_for('category', category='deser') }}">Desery</a>
     </div>
   </div>
 
-  <!-- 🔹 Menu konto -->
+
   <div class="dropdown">
     <a href="javascript:void(0);" onclick="toggleDropdown(event)">
       Konto {% if session.get('username') %}({{ session['username'] }}){% endif %}
@@ -35,13 +33,11 @@
     </div>
   </div>
 
-  <!-- 🔹 Ikona menu (dla wersji mobilnej) -->
   <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
     <i class="fa fa-bars"></i>
   </a>
 </div>
 
-<!-- 🔹 Modal logowania -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('loginModal')">&times;</span>
@@ -54,7 +50,6 @@
   </div>
 </div>
 
-<!-- 🔹 Modal rejestracji -->
 <div id="registerModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('registerModal')">&times;</span>

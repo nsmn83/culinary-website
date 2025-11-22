@@ -1,0 +1,24 @@
+{
+    "original_id": "53064",
+    "name": "Fettuccine Alfredo",
+    "category": "obiad",
+    "image_filename": "53064_Fettuccine_Alfredo.jpg",
+    "time": "25 min",
+    "difficulty": "Średni",
+    "portions": "3-4",
+    "ingredients": [
+        "450 g makaronu fettuccine",
+        "120 ml śmietany kremówki",
+        "120 g masła",
+        "50 g startego parmezanu",
+        "2 łyżki posiekanej pietruszki",
+        "sól i czarny pieprz do smaku"
+    ],
+    "steps": [
+        "Ugotuj makaron zgodnie z instrukcją na opakowaniu w dużym garnku osolonej wrzącej wody.",
+        "W rondlu na średnim ogniu podgrzej śmietanę i masło, aż masło się rozpuści, a śmietana zacznie się gotować.",
+        "Dodaj starty parmezan i dopraw solą oraz pieprzem, mieszaj, aż sos lekko zgęstnieje.",
+        "Dodaj ugotowany makaron do sosu i dokładnie wymieszaj, aby był równomiernie pokryty sosem.",
+        "Posyp posiekaną pietruszką i podawaj."
+    ]
+}

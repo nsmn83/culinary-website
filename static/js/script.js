@@ -8,19 +8,16 @@ function toggleMenu() {
     nav.className = "topnav";
   }
 
-  // Ukryj wszystkie submenu przy każdym toggle hamburgera
   dropdowns.forEach(dd => {
     dd.style.display = "none";
   });
 }
 
-// Funkcja dla mobilnego rozwijania submenu
 function toggleDropdown(event) {
   if (window.innerWidth <= 600) {
     event.preventDefault();
     const dropdownContent = event.currentTarget.nextElementSibling;
 
-    // Toggle tylko tego dropdownu
     if (dropdownContent.style.display === "block") {
       dropdownContent.style.display = "none";
     } else {
@@ -59,7 +56,6 @@ function removeField(element) {
   element.closest('.field-item').remove();
 }
 
-//logowanie i rejestracja
 function openModal(id) {
   document.getElementById(id).style.display = "block";
 }
@@ -112,10 +108,9 @@ window.addEventListener('resize', () => {
 
   if (window.innerWidth > 600) {
     dropdowns.forEach(dd => {
-      dd.style.display = ''; // usuwa inline display, pozwala CSS zrobić swoje
+      dd.style.display = ''; //usuniecie inline display
     });
 
-    // usuń klasę responsive jeśli była
     if (nav.classList.contains('responsive')) {
       nav.classList.remove('responsive');
     }

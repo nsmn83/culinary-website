@@ -1,0 +1,30 @@
+{
+    "original_id": "52956",
+    "name": "Kurka Congee",
+    "category": "kolacja",
+    "image_filename": "52956_Chicken_Congee.jpg",
+    "time": "45 min",
+    "difficulty": "Łatwy",
+    "portions": "2-3",
+    "ingredients": [
+        "225 g kurczaka",
+        "szczypta soli",
+        "szczypta pieprzu",
+        "1 łyżeczka soku imbirowego",
+        "1 łyżeczka świeżego imbiru, pokrojonego w plasterki",
+        "1 łyżka szczypiorku",
+        "120 ml ryżu",
+        "2 litry wody",
+        "60 g kolendry"
+    ],
+    "steps": [
+        "W misce wymieszaj kurczaka z solą, białym pieprzem i sokiem z imbiru, odstaw na bok.",
+        "Ryż dokładnie przepłucz w metalowej misce lub garnku i odcedź wodę.",
+        "Do garnka z ryżem dodaj 2 litry wody i doprowadź do wrzenia na dużym ogniu.",
+        "Gdy ryż zacznie się gotować, zmniejsz ogień na mały i mieszaj co 8-10 minut przez około 20-25 minut.",
+        "Po 25 minutach można opcjonalnie dodać trochę wody, jeśli chcemy rzadszą konsystencję.",
+        "Dodaj marynowanego kurczaka do ryżu i gotuj na małym ogniu kolejne 10 minut.",
+        "Po tym czasie dodaj szczypiorek, plasterki imbiru, szczyptę soli i pieprzu, wymieszaj przez 10 sekund.",
+        "Podawaj congee w misce. Opcjonalnie posyp kolendrą."
+    ]
+}

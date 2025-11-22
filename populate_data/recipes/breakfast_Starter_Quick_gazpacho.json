@@ -1,0 +1,21 @@
+{
+    "original_id": "53173",
+    "name": "Szybkie gazpacho",
+    "category": "śniadanie",
+    "image_filename": "53173_Quick_gazpacho.jpg",
+    "time": "30-45 min",
+    "difficulty": "Średni",
+    "portions": "2-4",
+    "ingredients": [
+        "250g passaty pomidorowej",
+        "1 posiekana czerwona papryka",
+        "1 posiekana czerwona papryczka chilli",
+        "1 ząbek czosnku, obrany i zmiażdżony",
+        "1 łyżeczka octu sherry",
+        "Sok z 1/2 limonki"
+    ],
+    "steps": [
+        "W blenderze (lub za pomocą blendera ręcznego) zmiksuj passatę, paprykę, papryczkę chilli, czosnek, ocet sherry i sok z limonki na gładką masę.",
+        "Dopraw do smaku i podawaj z kostkami lodu."
+    ]
+}

@@ -7,12 +7,8 @@
 <article class="recipe-detail">
 
 
-  <!-- ============================================= -->
-  <!--             LEWA + PRAWA KOLUMNA              -->
-  <!-- ============================================= -->
   <div class="recipe-container">
 
-      <!-- LEWA KOLUMNA -->
       <aside class="recipe-info">
         <img src="{{ url_for('static', filename='images/' + recipe.image) }}" alt="{{ recipe.name }}" class="recipe-image">
 
@@ -31,7 +27,6 @@
         </ul>
       </aside>
 
-      <!-- PRAWA KOLUMNA -->
       <section class="recipe-steps">
         <h2 class="recipe-title">{{ recipe.name }}</h2>
 
@@ -43,13 +38,9 @@
         </ol>
       </section>
 
-  </div> <!-- koniec recipe-container -->
+  </div> 
 
 
-
-  <!-- ============================================= -->
-  <!--                  KOMENTARZE (NA DOLE)         -->
-  <!-- ============================================= -->
    <div class="recipe-container">
   <div class="comments-wrapper">
 
@@ -73,7 +64,6 @@
       </section>
     {% endif %}
 
-    <!-- Lista komentarzy -->
     <section>
       <h3>Komentarze ({{ recipe.comments|length }})</h3>
       {% if recipe.comments %}

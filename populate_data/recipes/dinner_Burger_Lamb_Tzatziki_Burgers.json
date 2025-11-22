@@ -1,0 +1,30 @@
+{
+    "original_id": "53010",
+    "name": "Burgery jagnięce z tzatziki",
+    "category": "obiad",
+    "image_filename": "53010_Lamb_Tzatziki_Burgers.jpg",
+    "time": "35 min",
+    "difficulty": "Średni",
+    "portions": "3-4",
+    "ingredients": [
+        "25 g kaszy bulgur",
+        "500 g mielonej jagnięciny",
+        "1 łyżeczka kminu rzymskiego",
+        "1 łyżeczka kolendry mielonej",
+        "1 łyżeczka papryki",
+        "1 ząbek czosnku, drobno posiekany",
+        "olej do smażenia",
+        "4 bułki",
+        "starty ogórek",
+        "200 g jogurtu greckiego",
+        "2 łyżki mięty"
+    ],
+    "steps": [
+        "Kaszę bulgur wsyp do garnka, zalej wodą i gotuj przez 10 minut.",
+        "Odcedź dokładnie w sitku, dociskając, aby pozbyć się nadmiaru wody.",
+        "Przygotuj tzatziki: odciśnij sok z ogórka, wymieszaj go z jogurtem, posiekaną miętą i odrobiną soli.",
+        "Wymieszaj ugotowaną kaszę z mieloną jagnięciną, przyprawami i czosnkiem, uformuj 4 burgery.",
+        "Posmaruj olejem i smaż lub grilluj około 5 minut z każdej strony, aż będą w pełni ugotowane.",
+        "Podawaj w bułkach (można je wcześniej opiec) z tzatziki, pomidorami, cebulą i listkami mięty."
+    ]
+}
