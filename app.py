@@ -9,7 +9,8 @@ import os
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "instance", "database.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "images")
@@ -372,10 +373,7 @@ def admin_delete_comment(comment_id):
     flash("Komentarz usunięty!", "success")
     return redirect(url_for("admin_dashboard"))
 
-
-if __name__ == "__main__":
-    os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
-
+def init_db():
     with app.app_context():
         db.create_all()
         
@@ -387,6 +385,12 @@ if __name__ == "__main__":
             )
             db.session.add(admin_user)
             db.session.commit()
-            print("Admin utworzony: username=admin, password=admin123")
+            print("--- BAZA ZAINICJOWANA, ADMIN UTWORZONY ---")
+
+
+init_db()
+
+if __name__ == "__main__":
+    os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
     app.run(debug=True)
