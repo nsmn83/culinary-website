@@ -52,3 +52,7 @@ htmlcov/
 # --- Scripts used to prepare data
 change_names.py
 download_data.py
+populate_data.py
+
+# --- folders with recipes json
+populate_data/

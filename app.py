@@ -7,21 +7,22 @@ from functools import wraps
 from dotenv import load_dotenv
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+import cloudinary
+import cloudinary.uploader
 import os
 
 load_dotenv()
 
-app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "fallback_key")
+cloudinary.config(
+    cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key = os.getenv('CLOUDINARY_API_KEY'),
+    api_secret = os.getenv('CLOUDINARY_API_SECRET')
+)
 
-ADMIN_USERNAME=os.getenv("ADMIN_USERNAME")
-ADMIN_PASSWORD=os.getenv("ADMIN_PASSWORD")
-ADMIN_EMAIL=os.getenv("ADMIN_EMAIL")
-DB_USER = os.getenv("POSTGRES_USER")
-DB_PASS = os.getenv("POSTGRES_PASSWORD")
-DB_NAME = os.getenv("POSTGRES_DB")
-DB_HOST = os.getenv("POSTGRES_HOST")
-DB_PORT = int(os.getenv("POSTGRES_PORT"))
+app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
+
+DATABASE_URL = os.getnev("DATABASE_URL")
 
 limiter = Limiter(
     get_remote_address,
@@ -31,7 +32,7 @@ limiter = Limiter(
 )
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "images")
@@ -97,6 +98,14 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f"<Comment {self.id}>"
+
+# --- Funkcja wyciągająca public_id z URL Cloudinary
+def get_public_id_from_url(url):
+    try:
+        if not url: return None
+        return url.split('/')[-1].rsplit('.', 1)[0]
+    except Exception:
+        return None
 
 def calculate_rating(recipe):
     avg_rating = db.session.query(db.func.avg(Comment.rating)).filter_by(recipe_id=recipe.id).scalar()
@@ -263,6 +272,8 @@ def allowed_file(filename):
 
 @app.route("/admin/recipe/add", methods=["GET", "POST"])
 @admin_required
+@app.route("/admin/recipe/add", methods=["GET", "POST"])
+@admin_required
 def add_recipe():
     if request.method == "POST":
         name = request.form.get("name")
@@ -270,13 +281,14 @@ def add_recipe():
         time = request.form.get("time")
         difficulty = request.form.get("difficulty")
         portions = request.form.get("portions")
+        
         image_file = request.files.get("image")
+        
+        image_url = "https://res.cloudinary.com/twoja-chmura/image/upload/placeholder.jpg"
 
-        filename = "placeholder.jpg"
-        if image_file and allowed_file(image_file.filename):
-            filename = secure_filename(image_file.filename)
-            image_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-            image_file.save(image_path)
+        if image_file:
+            upload_result = cloudinary.uploader.upload(image_file)
+            image_url = upload_result.get("secure_url")
 
         new_recipe = Recipe(
             name=name,
@@ -284,7 +296,7 @@ def add_recipe():
             time=time,
             difficulty=difficulty,
             portions=portions,
-            image=filename
+            image=image_url 
         )
         db.session.add(new_recipe)
         db.session.commit()
@@ -308,27 +320,50 @@ def add_recipe():
 
 @app.route("/admin/recipe/<int:recipe_id>/edit", methods=["GET", "POST"])
 @admin_required
+@app.route("/admin/recipe/<int:recipe_id>/edit", methods=["GET", "POST"])
+@admin_required
 def admin_edit_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
+    
     if request.method == "POST":
         recipe.name = request.form.get("name")
         recipe.category = request.form.get("category")
         recipe.time = request.form.get("time")
         recipe.difficulty = request.form.get("difficulty")
         recipe.portions = request.form.get("portions")
-        recipe.image = request.form.get("image")
+        
+        new_image_file = request.files.get("image")
+        
+        if new_image_file and new_image_file.filename != '':
+            if recipe.image and "placeholder" not in recipe.image:
+                old_public_id = get_public_id_from_url(recipe.image)
+                if old_public_id:
+                    cloudinary.uploader.destroy(old_public_id)
+            
+            upload_result = cloudinary.uploader.upload(new_image_file)
+            recipe.image = upload_result.get("secure_url")
+
         db.session.commit()
         flash("Przepis zaktualizowany!", "success")
         return redirect(url_for("admin_dashboard"))
+        
     return render_template("admin_edit_recipe.html", recipe=recipe)
 
 @app.route("/admin/recipe/<int:recipe_id>/delete", methods=["POST"])
 @admin_required
+@app.route("/admin/recipe/<int:recipe_id>/delete", methods=["POST"])
+@admin_required
 def admin_delete_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
+    
+    if recipe.image and "placeholder" not in recipe.image: 
+        public_id = get_public_id_from_url(recipe.image)
+        if public_id:
+            cloudinary.uploader.destroy(public_id)
+
     db.session.delete(recipe)
     db.session.commit()
-    flash("Przepis usunięty!", "success")
+    flash("Przepis i zdjęcie usunięte!", "success")
     return redirect(url_for("admin_dashboard"))
 
 @app.route("/admin/recipe/<int:recipe_id>/ingredients")

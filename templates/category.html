@@ -12,7 +12,11 @@
     {% if recipes %}
         {% for recipe in recipes %}
 <div class="card">
-    <img src="{{ url_for('static', filename='images/' + recipe.image) }}" alt="{{ recipe.name }}">
+    {% if 'http' in recipe.image %}
+    <img src="{{ recipe.image }}" alt="{{ recipe.name }}" class="recipe-image">
+    {% else %}
+    <img src="{{ url_for('static', filename='images/' + placeholder.jpg)}}" alt="{{ recipe.name }}" class="recipe-image">
+    {% endif %}
     <h3>{{ recipe.name }}</h3>
     <p><i class="fa fa-clock-o"></i> Czas: {{ recipe.time }}</p>
     <p><i class="fa fa-fire"></i> {{ recipe.difficulty }}</p>
