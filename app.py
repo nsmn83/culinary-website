@@ -15,7 +15,6 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_key")
 ADMIN_USERNAME=os.getenv("ADMIN_USERNAME")
 ADMIN_PASSWORD=os.getenv("ADMIN_PASSWORD")
 ADMIN_EMAIL=os.getenv("ADMIN_EMAIL")
-
 DB_USER = os.getenv("POSTGRES_USER")
 DB_PASS = os.getenv("POSTGRES_PASSWORD")
 DB_NAME = os.getenv("POSTGRES_DB")

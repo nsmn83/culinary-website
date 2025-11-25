@@ -94,7 +94,6 @@
   </div>
 </article>
 
-<!-- Modal dodawania/edycji komentarza -->
 <div id="commentModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('commentModal')">&times;</span>
@@ -130,26 +129,5 @@
     {% endif %}
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    initStarRating('.star-rating', '#rating');
-
-    window.openModal = function(id) {
-      document.getElementById(id).style.display = 'block';
-    }
-
-    window.closeModal = function(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-      let modal = document.getElementById('commentModal');
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  });
-</script>
 
 {% endblock %}

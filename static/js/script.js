@@ -2,27 +2,17 @@ function toggleMenu() {
   const nav = document.getElementById("myTopnav");
   const dropdowns = nav.querySelectorAll('.dropdown .dropdown-content');
 
-  if (nav.className === "topnav") {
-    nav.className += " responsive";
-  } else {
-    nav.className = "topnav";
-  }
+  nav.classList.toggle("responsive");
 
-  dropdowns.forEach(dd => {
-    dd.style.display = "none";
-  });
+  dropdowns.forEach(dd => dd.style.display = "none");
 }
 
 function toggleDropdown(event) {
   if (window.innerWidth <= 600) {
     event.preventDefault();
     const dropdownContent = event.currentTarget.nextElementSibling;
-
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
+    dropdownContent.style.display =
+      dropdownContent.style.display === "block" ? "none" : "block";
   }
 }
 
@@ -34,8 +24,7 @@ function addIngredient() {
     <input type="text" name="ingredients" placeholder="np. 200 g mąki">
     <button type="button" class="btn btn-danger" onclick="removeField(this)">
       <i class="fa fa-trash"></i>
-    </button>
-  `;
+    </button>`;
   container.appendChild(newItem);
 }
 
@@ -47,8 +36,7 @@ function addStep() {
     <input type="text" name="steps" placeholder="np. Wymieszaj składniki">
     <button type="button" class="btn btn-danger" onclick="removeField(this)">
       <i class="fa fa-trash"></i>
-    </button>
-  `;
+    </button>`;
   container.appendChild(newItem);
 }
 
@@ -69,7 +57,7 @@ window.onclick = function(event) {
   for (let m of modals) {
     if (event.target == m) m.style.display = "none";
   }
-}
+};
 
 function initStarRating(containerSelector, inputSelector) {
   const container = document.querySelector(containerSelector);
@@ -80,61 +68,45 @@ function initStarRating(containerSelector, inputSelector) {
 
   stars.forEach(star => {
     star.addEventListener('click', () => {
-      const value = star.getAttribute('data-value');
+      const value = star.dataset.value;
       input.value = value;
-
-      stars.forEach(s => {
-        s.classList.toggle('star-checked', s.getAttribute('data-value') <= value);
-      });
+      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= value));
     });
 
     star.addEventListener('mouseover', () => {
-      const value = star.getAttribute('data-value');
-      stars.forEach(s => {
-        s.classList.toggle('star-checked', s.getAttribute('data-value') <= value);
-      });
+      const value = star.dataset.value;
+      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= value));
     });
 
     star.addEventListener('mouseout', () => {
       const selected = input.value;
-      stars.forEach(s => {
-        s.classList.toggle('star-checked', s.getAttribute('data-value') <= selected);
-      });
+      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= selected));
     });
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  initStarRating('.star-rating', '#rating');
+
+  const flashMessages = document.querySelectorAll('.flash-message');
+  if (flashMessages.length > 0) {
+    setTimeout(function() {
+      flashMessages.forEach(function(message) {
+        message.style.transition = "opacity 0.5s ease, margin-top 0.5s ease";
+        message.style.opacity = "0";
+        message.style.marginTop = "-" + message.offsetHeight + "px";
+        setTimeout(() => message.remove(), 500);
+      });
+    }, 5000);
+  }
+});
 
 window.addEventListener('resize', () => {
   const nav = document.getElementById("myTopnav");
   const dropdowns = nav.querySelectorAll('.dropdown .dropdown-content');
 
   if (window.innerWidth > 600) {
-    dropdowns.forEach(dd => {
-      dd.style.display = '';
-    });
-
-    if (nav.classList.contains('responsive')) {
-      nav.classList.remove('responsive');
-    }
+    dropdowns.forEach(dd => dd.style.display = '');
+    nav.classList.remove('responsive');
   }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const flashMessages = document.querySelectorAll('.flash-message');
-    
-    if (flashMessages.length > 0) {
-        setTimeout(function() {
-            flashMessages.forEach(function(message) {
-                message.style.transition = "opacity 0.5s ease, margin-top 0.5s ease";
-                
-                message.style.opacity = "0";
-                
-                message.style.marginTop = "-" + message.offsetHeight + "px"; 
-                
-                setTimeout(function() {
-                    message.remove();
-                }, 500);
-            });
-        }, 5000); 
-    }
 });
