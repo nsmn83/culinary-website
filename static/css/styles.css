@@ -308,7 +308,6 @@ ol li {
 .hero-content {
     color: var(--bg-white);
     padding: 20px;
-    animation: fadeIn 1s ease-out;
 }
 
 .hero-title {
