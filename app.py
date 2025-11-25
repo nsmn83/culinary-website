@@ -216,6 +216,7 @@ def login():
 
 @app.route("/register", methods=["POST"])
 def register():
+    '''
     username = request.form.get("username")
     email = request.form.get("email")
     password = request.form.get("password")
@@ -227,7 +228,8 @@ def register():
     db.session.commit()
     flash("Zarejestrowano pomyślnie!", "success")
     return redirect(url_for("index"))
-    #return "Serwer odebrał żądanie rejestracji"
+    '''
+    return "Serwer odebrał żądanie rejestracji"
 
 @app.route("/logout")
 def logout():
