@@ -45,8 +45,7 @@ ol li {
 
 .topnav a {
   float: left;
-  display: block;
-  color: #f2f2f2;
+  color: var(--text-white);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -58,6 +57,7 @@ ol li {
   color: var(--primary-color);
 }
 
+/* potrzebne do menu responsywnego - by ikonka znikała przy rozciąganiu ekranu */
 .topnav .icon {
   display: none;
 }
@@ -65,7 +65,6 @@ ol li {
 /* Menu rozwijane (kategorie przepisów, opcje zarządzania kontem */
 .topnav .dropdown {
   float: left;
-  overflow: hidden;
 }
 
 .topnav .dropdown .dropdown-content {
@@ -74,7 +73,6 @@ ol li {
   background-color: var(--text-dark);
   min-width: 160px;
   z-index: 1;
-  flex-direction: column;
 }
 
 .topnav .dropdown:hover .dropdown-content {
@@ -189,6 +187,13 @@ ol li {
   font-size: 1rem;
   font-weight: 500;
 }
+
+.flash-message.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 
 .flash-message.success {
   background-color: #d4edda;
@@ -472,18 +477,16 @@ ol li {
 .ingredients {
   list-style: disc;
   padding-left: 1.2rem;
-  line-height: 1.6;
 }
 
 .recipe-steps {
   background: var(--bg-white);
   border: 1px solid var(--border-light);
-  padding: 1.5rem;
+  padding: 10px;
   list-style: none;
 }
 
 .recipe-title {
-  font-size: 2rem;
   color: var(--primary-color);
   margin-top: 0;
   margin-bottom: 1rem;
@@ -585,7 +588,7 @@ ol li {
   padding: 0;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  overflow: hidden;
+
 }
 
 .comments-wrapper section {
@@ -631,7 +634,6 @@ ol li {
 .comment-user-info {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 }
 
 .comment-username {
@@ -903,10 +905,6 @@ ol li {
     grid-template-columns: 1fr;
   }
 
-  .recipe-info {
-    order: -1;
-  }
-
   .recipe-form {
     width: 90%;
     padding: 15px;
@@ -936,23 +934,21 @@ ol li {
   }
 }
 
-@media (max-width: 768px) {
+/* Znika opis przepisu w kafelku */
+@media (max-width: 600px) {
 
   .card p {
     display: none;
   }
 }
 
+/* Dla ekranów mobilnych dwie kolumny w liscie przepisow */
 @media screen and (max-width: 600px) {
   .recipe-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px; 
-    justify-items: center; 
+    grid-template-columns: repeat(2, 160px);
+    gap: 15px;
   }
 
-  .topnav a:not(:first-child) {
-    display: none;
-  }
 
   .topnav a.icon {
     float: right;
@@ -961,10 +957,6 @@ ol li {
 
   .topnav .dropdown {
     display: none;
-  }
-
-  .topnav.responsive {
-    position: relative;
   }
 
   .topnav.responsive .icon {

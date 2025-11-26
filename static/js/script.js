@@ -5,7 +5,7 @@ function toggleMenu() {
   nav.classList.toggle("responsive");
 
   dropdowns.forEach(dd => dd.style.display = "none");
-}
+};
 
 function toggleDropdown(event) {
   if (window.innerWidth <= 600) {
@@ -14,7 +14,7 @@ function toggleDropdown(event) {
     dropdownContent.style.display =
       dropdownContent.style.display === "block" ? "none" : "block";
   }
-}
+};
 
 function addIngredient() {
   const container = document.getElementById('ingredients-container');
@@ -26,6 +26,32 @@ function addIngredient() {
       <i class="fa fa-trash"></i>
     </button>`;
   container.appendChild(newItem);
+};
+
+function initStarRating(containerSelector, inputSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  const stars = container.querySelectorAll('.fa-star');
+  const input = document.querySelector(inputSelector);
+
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const value = star.dataset.value;
+      input.value = value;
+      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= value));
+    });
+
+    star.addEventListener('mouseover', () => {
+      const value = star.dataset.value;
+      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= value));
+    });
+
+    star.addEventListener('mouseout', () => {
+      const selected = input.value;
+      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= selected));
+    });
+  });
 }
 
 function addStep() {
@@ -59,31 +85,7 @@ window.onclick = function(event) {
   }
 };
 
-function initStarRating(containerSelector, inputSelector) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
 
-  const stars = container.querySelectorAll('.fa-star');
-  const input = document.querySelector(inputSelector);
-
-  stars.forEach(star => {
-    star.addEventListener('click', () => {
-      const value = star.dataset.value;
-      input.value = value;
-      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= value));
-    });
-
-    star.addEventListener('mouseover', () => {
-      const value = star.dataset.value;
-      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= value));
-    });
-
-    star.addEventListener('mouseout', () => {
-      const selected = input.value;
-      stars.forEach(s => s.classList.toggle('star-checked', s.dataset.value <= selected));
-    });
-  });
-}
 
 document.addEventListener('DOMContentLoaded', function() {
   initStarRating('.star-rating', '#rating');

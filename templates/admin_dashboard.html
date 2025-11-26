@@ -36,9 +36,6 @@
             <td>{{ recipe.difficulty }}</td>
             <td>{{ recipe.rating }}</td>
             <td class="action-buttons" style="text-align: center;">
-              <a href="{{ url_for('admin_edit_recipe', recipe_id=recipe.id) }}" class="btn btn-warning" title="Edytuj">
-                <i class="fa fa-edit"></i>
-              </a>
               <a href="{{ url_for('recipe_detail', recipe_id=recipe.id) }}" class="btn btn-info" title="Podgląd">
                 <i class="fa fa-eye"></i>
               </a>
@@ -106,7 +103,7 @@
         <thead>
           <tr>
             <th style="width: 5%;">ID</th>
-            <th style="width: 15%;">Kto</th>
+            <th style="width: 15%;">ID osoby</th>
             <th style="width: 15%;">Gdzie</th>
             <th style="width: 10%;">Ocena</th>
             <th style="width: 40%;">Treść</th>
@@ -117,7 +114,7 @@
           {% for comment in comments|sort(attribute='created_at', reverse=True) %}
           <tr>
             <td>{{ comment.id }}</td>
-            <td>{{ comment.user.username }}</td>
+            <td>{{ comment.user.id }}</td>
             <td><a href="{{ url_for('recipe_detail', recipe_id=comment.recipe.id) }}">{{ comment.recipe.name|truncate(20) }}</a></td>
             <td>
               <span style="color: #f39c12;">★</span> {{ comment.rating }}

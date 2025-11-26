@@ -149,28 +149,39 @@ def recipe_detail(recipe_id):
 
 @app.route("/recipe/<int:recipe_id>/add_comment", methods=["POST"])
 @login_required
-def add_comment(recipe_id):
-    recipe = Recipe.query.get_or_404(recipe_id)
-    user = User.query.filter_by(username=session["username"]).first()
+@app.route('/recipe/<int:recipe_id>/comment', methods=['POST'])
+@app.route('/recipe/<int:recipe_id>/comment/<int:comment_id>', methods=['POST'])
+def add_comment(recipe_id, comment_id=None):
+    if 'user_id' not in session:
+        flash("Musisz być zalogowany")
+        return redirect(url_for('login'))
 
-    existing_comment = Comment.query.filter_by(recipe_id=recipe.id, user_id=user.id).first()
-    if existing_comment:
-        flash("Komentarz już istnieje.", "error")
-        return redirect(url_for("recipe_detail", recipe_id=recipe.id))
+    text = request.form.get('text')
+    rating = request.form.get('rating')
 
-    rating = int(request.form.get("rating"))
-    text = request.form.get("text").strip()
+    if not text or not rating:
+        flash("Uzupełnij komentarz i ocenę")
+        return redirect(url_for('recipe_detail', recipe_id=recipe_id))
 
-    if not text or rating < 1 or rating > 5:
-        flash("Nieprawidłowe dane komentarza.", "error")
-        return redirect(url_for("recipe_detail", recipe_id=recipe.id))
+    if comment_id:  # edycja istniejącego komentarza
+        comment = Comment.query.get_or_404(comment_id)
+        if comment.user_id != session['user_id']:
+            flash("Nie możesz edytować czyjegoś komentarza")
+            return redirect(url_for('recipe_detail', recipe_id=recipe_id))
+        comment.text = text
+        comment.rating = int(rating)
+    else:  # nowy komentarz
+        comment = Comment(
+            user_id=session['user_id'],
+            recipe_id=recipe_id,
+            text=text,
+            rating=int(rating)
+        )
+        db.session.add(comment)
 
-    comment = Comment(text=text, rating=rating, user=user, recipe=recipe)
-    db.session.add(comment)
     db.session.commit()
-    calculate_rating(recipe)
-    flash("Komentarz dodany!", "success")
-    return redirect(url_for("recipe_detail", recipe_id=recipe.id))
+    return redirect(url_for('recipe_detail', recipe_id=recipe_id))
+
 
 @app.route("/recipe/<int:recipe_id>/delete_comment/<int:comment_id>", methods=["POST"])
 @login_required
@@ -436,4 +447,4 @@ init_db()
 if __name__ == "__main__":
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
-    app.run()
+    app.run(debug=True)
