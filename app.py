@@ -147,7 +147,6 @@ def recipe_detail(recipe_id):
             user_comment = Comment.query.filter_by(recipe_id=recipe.id, user_id=user.id).first()
     return render_template("recipe.html", recipe=recipe, user_comment=user_comment)
 
-@app.route("/recipe/<int:recipe_id>/add_comment", methods=["POST"])
 @login_required
 @app.route('/recipe/<int:recipe_id>/comment', methods=['POST'])
 @app.route('/recipe/<int:recipe_id>/comment/<int:comment_id>', methods=['POST'])
