@@ -244,9 +244,10 @@ def login():
         flash("Nieprawidłowe dane logowania", "error")
     return redirect(url_for("index"))
 
-#Rejestracja użytkownika
+#Rejestracja użytkownika - tymczasowo zablokowana
 @app.route("/register", methods=["POST"])
 def register():
+    '''
     username = request.form.get("username")
     email = request.form.get("email")
     password = request.form.get("password")
@@ -258,7 +259,8 @@ def register():
     db.session.commit()
     flash("Zarejestrowano pomyślnie!", "success")
     return redirect(url_for("index"))
-
+    '''
+    return "Serwer odebrał żądanie rejestracji"
 
 #Wylogowanie użytkownika
 @app.route("/logout")
