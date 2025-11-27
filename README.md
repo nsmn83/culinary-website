@@ -23,7 +23,14 @@ Na potrzeby projektu dane zmodyfikowano - przepisy przetłumaczono na język pol
 
 
 ## GUI
-Warstwa graficzna systemu opiera się na prostych stylach CSS. Zaimplementowano responsywność.  Na ten moment strona nie jest dokończa.
+Warstwa graficzna systemu opiera się na prostych stylach CSS. Zaimplementowano responsywność.
+Strona jest zabezpieczona przed typowymi atakami, np. SQL Injection, jednak tymczasowo wyłączono możliwość tworzenia konta w celu
+uniknięcia przetwarzania danych osobowych.
 
 ![Strona główna](static/images/readme_screenshot_1.jpg)
 
+![Lista przepisów](static/images/readme_screenshot_2.jpg)
+
+## Do dodania
+Aplikacja wymaga dodania walidacji treści wrzucanych przez użytkowników.
+Docelowo planowany jest pełny deploy z użyciem CI/CD. 
