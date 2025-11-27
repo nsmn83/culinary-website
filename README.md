@@ -2,6 +2,11 @@
 
 ## System webowy umożliwiający prowadzenie bloga z przepisami oraz udostępniający możliwość interkacji użytkowników z danymi przepisami (oceny, komentarze)
 
+## Hosting
+Strona dostępna jest pod adresem: https://zarlwok.pl/
+Jej włączenie może chwilę zająć - podczas dłuższego braku ruchu jest usypiana.
+Hosting zrealizowano korzystająć z Render dla bazy danych oraz kontenera z backendem oraz Cloudinary to zasobów mulitmedialnych.
+
 ## Stack technologiczny
 W skład aplikacji na chwilę obecną wchodzi:
 - **Backend:** Python, Flask, Flask-Login, Flask-SQLAlchemy - hostowany na Render  
