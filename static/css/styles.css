@@ -43,6 +43,7 @@ ol li {
   background-color: var(--primary-color);
 }
 
+/* linki od lewej, tekst na srodku linku*/
 .topnav a {
   float: left;
   color: var(--text-white);
@@ -52,6 +53,7 @@ ol li {
   font-size: 17px;
 }
 
+/* gdy przejedziemy nad linkiem to zmienia się kolor */
 .topnav a:hover {
   background-color: var(--border-light);
   color: var(--primary-color);
@@ -67,16 +69,18 @@ ol li {
   float: left;
 }
 
+/*  noramalnie dropdown-content jest schowany */
 .topnav .dropdown .dropdown-content {
   display: none;
+}
+
+
+.topnav .dropdown:hover .dropdown-content {
+  display: block;
   position: absolute;
   background-color: var(--text-dark);
   min-width: 160px;
   z-index: 1;
-}
-
-.topnav .dropdown:hover .dropdown-content {
-  display: block;
 }
 
 .topnav .dropdown .dropdown-content a {
@@ -91,10 +95,6 @@ ol li {
 .topnav .dropdown .dropdown-content a:hover {
   background-color: var(--border-light);
   color: black;
-}
-
-.topnav .dropdown a i {
-  margin-left: 5px;
 }
 
 /* Przyciski używane w aplikacji */
@@ -178,12 +178,13 @@ ol li {
 }
 
 .flash-message {
+  display: flex;
+  align-items: center;
+  position: relative;
   padding: 15px 40px 15px 15px;
   margin-bottom: 10px;
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  position: relative;
-  animation: slideInDown 0.4s ease-out;
+  box-shadow: var(--shadow-lg);
   font-size: 1rem;
   font-weight: 500;
 }
@@ -221,19 +222,14 @@ ol li {
 
 .flash-message .close-btn {
   position: absolute;
-  top: 50%;
   right: 15px;
-  transform: translateY(-50%);
   font-size: 24px;
   font-weight: bold;
-  color: inherit;
   opacity: 0.6;
   cursor: pointer;
   background: none;
   border: none;
   padding: 0;
-  line-height: 1;
-  transition: opacity var(--transition-fast);
 }
 
 .flash-message .close-btn:hover {
@@ -248,15 +244,6 @@ ol li {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 
@@ -322,6 +309,7 @@ ol li {
     color: var(--text-white); 
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     line-height: 1.1;
+    letter-spacing: 10px;
 }
 
 
@@ -349,14 +337,8 @@ ol li {
 
 .hero-btn:hover {
     transform: translateY(-3px); 
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    box-shadow: var(--shadow-md);
 }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 
 
 /* Ustawienie grida dla kafelków z przepisami - w tym celu użyto display grid*/
@@ -371,10 +353,8 @@ ol li {
 .card {
   background-color: var(--bg-white);
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: var(--shadow-sm);
   text-align: center;
-  transition: transform var(--transition-fast);
   max-width: 300px;
 }
 
@@ -385,18 +365,17 @@ ol li {
 
 .card:hover {
   transform: translateY(-5px);
+  transition: var(--transition-fast);
 }
 
 .card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  display: block;
 }
 
 .card h3 {
   margin: 10px 0 5px;
-  font-size: 1.2em;
 }
 
 .card p {
@@ -405,7 +384,7 @@ ol li {
 }
 
 .card a {
-  display: inline-block;
+  display: inline-block; /* by przypisac do linku wysokosc, szerokosc itp*/
   margin: 10px 0 15px;
   padding: 8px 16px;
   background-color: var(--primary-color);
@@ -420,7 +399,6 @@ ol li {
 }
 
 /* Klasy wykorzystywane na stronie z przepisem */
-
 .recipe-container {
   max-width: 1100px;
   margin: 2rem auto;
@@ -443,7 +421,6 @@ ol li {
 
 .recipe-image {
   width: 100%;
-  display: block;
   height: 300px;
   object-fit: cover;
 }
@@ -454,7 +431,6 @@ ol li {
 }
 
 .recipe-meta {
-  list-style: none;
   padding: 0;
   margin-bottom: 1.5rem;
 }
@@ -462,7 +438,6 @@ ol li {
 .recipe-meta li {
   margin-bottom: 0.5rem;
   display: flex;
-  align-items: center;
 }
 
 .recipe-meta i {
@@ -490,7 +465,6 @@ ol li {
   color: var(--primary-color);
   margin-top: 0;
   margin-bottom: 1rem;
-  text-align: left;
 }
 
 .recipe-steps h3 {
@@ -515,9 +489,7 @@ ol li {
   margin-bottom: 0.3rem;
 }
 
-/* ========================================
-   FORMS
-   ======================================== */
+/* Dodawanie przepisu */
 .recipe-form {
   display: flex;
   flex-direction: column;
@@ -674,7 +646,7 @@ ol li {
 
 .modal-content {
   background-color: var(--bg-white);
-  margin: 100px auto;
+  margin: 100px auto; /* wyśrodkowanie modala na stronie */
   padding: 25px 20px;
   border-radius: var(--radius-lg);
   width: 90%;
@@ -793,7 +765,7 @@ ol li {
   border: 1px solid var(--border-lighter);
   border-radius: 6px;
   scrollbar-width: thin;
-  scrollbar-color: var(--primary-color) #f1f1f1;
+  scrollbar-color: var(--primary-color) var(--border-light);
 }
 
 .admin-table {
@@ -829,19 +801,23 @@ ol li {
   background-color: #fff5f5;
 }
 
+/* cała belka scrollbara */
 .admin-table-wrapper::-webkit-scrollbar {
   width: 8px;
 }
 
+/* tło scrollbara */
 .admin-table-wrapper::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
+/* suwak */
 .admin-table-wrapper::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: var(--radius-sm);
 }
 
+/* podczas przesuniecia */
 .admin-table-wrapper::-webkit-scrollbar-thumb:hover {
   background: #551316;
 }
